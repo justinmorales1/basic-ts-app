@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Todo, fetchTodos, deleteTodo, addCount, subtractCount} from '../actions';
+import { addCount, subtractCount} from '../actions';
 import { countState } from '../reducers/count';
 import { StoreState } from '../reducers';
 

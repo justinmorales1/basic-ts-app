@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Todo, fetchTodos, deleteTodo, addCount, subtractCount} from '../actions';
+import { Todo, fetchTodos, deleteTodo} from '../actions';
 import { countState } from '../reducers/count';
 import { StoreState } from '../reducers';
 
@@ -8,9 +8,7 @@ interface AppProps {
   todos: Todo[]; //State from the reducer
   nums: countState; //State from the reducer
   fetchTodos: Function; //This is because its a redux thunk and it will cause an error.
-  deleteTodo: typeof deleteTodo;
-  addCount: typeof addCount; //Action Creator
-  subtractCount: typeof subtractCount; //Action Creator
+  deleteTodo: typeof deleteTodo; //Action Creator
 }
 
 
@@ -42,14 +40,6 @@ class _ListViewClass extends React.Component<AppProps, AppState>  {
     this.props.deleteTodo(id);
   };
 
-  addButton = () => {
-    this.props.addCount();
-  }
-
-  subtractButton = () => {
-    this.props.subtractCount();
-  }
-
   renderList(): JSX.Element[] {
     return this.props.todos.map((todo: Todo) => {
       return (
@@ -63,11 +53,6 @@ class _ListViewClass extends React.Component<AppProps, AppState>  {
   render() {
     return (
       <div>
-        {/* <div>
-          <div>The count is: {this.props.nums.count}</div>
-          <button onClick={this.addButton}>Click to Add</button>
-          <button onClick={this.subtractButton}>Click to Subtract</button>
-        </div> */}
         <button onClick={this.onButtonClick}> Fetch</button>
         {this.state.fetching ? 'Loading': null}
         {this.renderList()}
@@ -84,4 +69,4 @@ const mapStateToProps = (state: StoreState) : {todos: Todo[] ; nums: countState}
   }
 }
 
-export const ListViewClass = connect(mapStateToProps,{fetchTodos, deleteTodo, addCount, subtractCount})(_ListViewClass);
+export const ListViewClass = connect(mapStateToProps,{fetchTodos, deleteTodo})(_ListViewClass);
