@@ -63,11 +63,11 @@ class _ListViewClass extends React.Component<AppProps, AppState>  {
   render() {
     return (
       <div>
-        <div>
-          The count is: {this.props.nums.count}
-          <button onClick={this.props.addCount}>Click to Add</button>
-          <button onClick={this.props.subtractCount}>Click to Subtract</button>
-        </div>
+        {/* <div>
+          <div>The count is: {this.props.nums.count}</div>
+          <button onClick={this.addButton}>Click to Add</button>
+          <button onClick={this.subtractButton}>Click to Subtract</button>
+        </div> */}
         <button onClick={this.onButtonClick}> Fetch</button>
         {this.state.fetching ? 'Loading': null}
         {this.renderList()}
